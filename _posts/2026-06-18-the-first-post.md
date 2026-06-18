@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "The First Post"
-date: 2026-06-18
+date: 2026-06-18 10:42:00 +0200
 author: "Charbel Daher"
 description: "A test post"
 tags:
