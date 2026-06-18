@@ -1,3 +1,19 @@
-theme: minima
 title: "Charbel Daher's Blog"
-description: "test"
+description: ""
+
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+
+pagination:
+  enabled: true
+  collection: 'posts'
+  sort_reverse: true
+  per_page: 8
+  permalink: '/page/:num/'
+  debug: true
+
+url: "https://daher9.github.io"
+
+plugins:
+  - jekyll-feed
+  - jekyll-paginate-v2

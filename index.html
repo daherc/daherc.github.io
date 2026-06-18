@@ -1,0 +1,50 @@
+---
+layout: default
+title: Home
+pagination:
+  enabled: true
+  collection: posts
+  permalink: /page:num/
+---
+
+<section class="home">
+  <div class="home-header">
+    <h1>{{ site.title }}</h1>
+  </div>
+  
+  <ol class="post-list" data-post-list>
+    {%- for post in paginator.posts -%}
+      {%- assign post_tag = post.tags | first -%}
+      <li class="post-item" data-post-tag="{{ post_tag | escape }}">
+        <span class="post-rank">{{ forloop.index }}.</span>
+        <div class="post-body">
+          <div class="post-title-row-home">
+            <a class="post-title post-title-home" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+            {%- if post_tag -%}
+              <span class="post-tag-badge post-tag-badge-home">{{ post_tag }}</span>
+            {%- endif -%}
+          </div>
+          <div class="post-meta">
+            <span>{{ post.date | date: "%b %-d, %Y" }}</span>
+          </div>
+        </div>
+      </li>
+    {%- endfor -%}
+  </ol>
+  {%- if paginator.total_pages > 1 -%}
+    <nav class="pagination" aria-label="Pagination">
+      {%- if paginator.previous_page -%}
+        <a class="pagination-link" href="{{ paginator.previous_page_path | relative_url }}">Newer</a>
+      {%- else -%}
+        <span class="pagination-spacer"></span>
+      {%- endif -%}
+
+      <span class="pagination-status">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+
+      {%- if paginator.next_page -%}
+        <a class="pagination-link" href="{{ paginator.next_page_path | relative_url }}">Older</a>
+      {%- endif -%}
+    </nav>
+  {%- endif -%}
+
+</section>

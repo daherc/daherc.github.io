@@ -1,0 +1,45 @@
+---
+layout: default
+---
+
+<article class="post">
+  <header class="post-header">
+    <div class="post-title-row">
+      <h1>{{ page.title }}</h1>
+      {%- assign post_tag = page.tags | first -%}
+      {%- if post_tag -%}
+        <a class="post-tag-badge">{{ post_tag }}</a>
+      {%- endif -%}
+    </div>
+
+    {%- assign reading_words = content | strip_html | number_of_words -%}
+    {%- assign reading_minutes = reading_words | plus: 199 | divided_by: 200 -%}
+    {%- if reading_minutes < 1 -%}
+      {%- assign reading_minutes = 1 -%}
+    {%- endif -%}
+
+    <div class="post-meta-row">
+      <div class="post-byline">
+        <span class="post-meta-line">by {{ page.author | default: site.title }}</span>
+        <span class="post-meta-line">{{ page.date | date: "%b %-d, %Y" }}</span>
+      </div>
+      <div class="post-reading-time">{{ reading_minutes }} min read</div>
+    </div>
+  </header>
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+
+  <nav class="post-cycle" aria-label="Post navigation">
+    {%- if page.previous -%}
+      <a class="cycle-link cycle-prev" href="{{ page.previous.url | relative_url }}">&laquo; Previous</a>
+    {%- else -%}
+      <span></span>
+    {%- endif -%}
+
+    {%- if page.next -%}
+      <a class="cycle-link cycle-next" href="{{ page.next.url | relative_url }}">Next &raquo;</a>
+    {%- endif -%}
+  </nav>
+</article>

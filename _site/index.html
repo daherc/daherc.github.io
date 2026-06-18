@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      
+        Home
+      
+    </title>
+    <meta name="description" content="">
+    <link rel="stylesheet" href="/assets/css/main.css">
+    
+    <link id="favicon" rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>📕</text></svg>">
+    
+    <script>
+      document.addEventListener('visibilitychange', () => {
+        const link = document.getElementById("favicon");
+        const originalTitle = " Home ";
+        if (document.hidden) {
+          document.title = "I thought we were having fun...";
+          link.href = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>😔</text></svg>";
+        } else {
+          document.title = "lol";
+          link.href = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>😂</text></svg>";
+
+          setTimeout(() => {
+            if (!document.hidden) {
+              document.title = originalTitle;
+              link.href = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>📕</text></svg>";
+            }
+          }, 1000);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-wrap site-header-inner">
+          <a class="site-brand" href="/">Home</a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="/about/">About</a>
+            <a href="/contact/">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="site-wrap site-main">
+        <section class="home">
+  <div class="home-header">
+    <h1>Charbel Daher's Blog</h1>
+  </div>
+  
+  <ol class="post-list" data-post-list><li class="post-item" data-post-tag="testing">
+        <span class="post-rank">1.</span>
+        <div class="post-body">
+          <div class="post-title-row-home">
+            <a class="post-title post-title-home" href="/2026/06/18/the-first-post/">The First Post</a><span class="post-tag-badge post-tag-badge-home">testing</span></div>
+          <div class="post-meta">
+            <span>Jun 18, 2026</span>
+          </div>
+        </div>
+      </li></ol></section>
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-wrap site-footer-inner">
+          <small style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <span>&copy; 2026 Charbel Daher. All rights reserved.</span>
+            <span><a href="/disclaimer/">Disclaimer</a></span>
+          </small>
+        </div>
+      </footer>
+
+    </div>
+  </body>
+</html>

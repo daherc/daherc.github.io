@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      {% if page.url == "/" %}
+        {{ site.title }}
+      {% else %}
+        {{ page.title }}
+      {% endif %}
+    </title>
+    <meta name="description" content="{{ site.description | escape }}">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    
+    <link id="favicon" rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>📕</text></svg>">
+    
+    <script>
+      document.addEventListener('visibilitychange', () => {
+        const link = document.getElementById("favicon");
+        const originalTitle = "{% if page.url == "/" %} {{ site.title }} {% else %} {{ page.title }} {% endif %}";
+        if (document.hidden) {
+          document.title = "I thought we were having fun...";
+          link.href = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>😔</text></svg>";
+        } else {
+          document.title = "lol";
+          link.href = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>😂</text></svg>";
+
+          setTimeout(() => {
+            if (!document.hidden) {
+              document.title = originalTitle;
+              link.href = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>📕</text></svg>";
+            }
+          }, 1000);
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <div class="site-wrap site-header-inner">
+          <a class="site-brand" href="{{ '/' | relative_url }}">Home</a>
+          <nav class="site-nav" aria-label="Primary">
+            <a href="{{ '/about/' | relative_url }}">About</a>
+            <a href="{{ '/contact/' | relative_url }}">Contact</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="site-wrap site-main">
+        {{ content }}
+      </main>
+
+      <footer class="site-footer">
+        <div class="site-wrap site-footer-inner">
+          <small style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <span>&copy; {{ site.time | date: "%Y" }} Charbel Daher. All rights reserved.</span>
+            <span><a href="{{ '/disclaimer/' | relative_url }}">Disclaimer</a></span>
+          </small>
+        </div>
+      </footer>
+
+    </div>
+  </body>
+</html>
